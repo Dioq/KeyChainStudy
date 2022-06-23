@@ -4,8 +4,8 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
+		<string>$(AppIdentifierPrefix)cn.jobs8</string>
 		<string>$(AppIdentifierPrefix)cn.jobs8a</string>
-		<string>$(AppIdentifierPrefix)cn.jobs8a1</string>
 	</array>
 </dict>
 </plist>

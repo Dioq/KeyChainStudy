@@ -1,12 +1,11 @@
 //
-//  ViewController.m
+//  MainViewController.m
 //  KeyChainStudy
 //
-//  Created by Dio Brand on 2022/6/23.
+//  Created by Dio Brand on 2022/6/24.
 //
 
-#import "ViewController.h"
-#import <Security/Security.h>
+#import "MainViewController.h"
 #import "KeyChain.h"
 #import "AlertController.h"
 
@@ -14,7 +13,7 @@ NSString * const KEY_USERNAME_PASSWORD = @"com.company.app.usernamepassword";
 NSString * const KEY_USERNAME = @"com.company.app.username";
 NSString * const KEY_PASSWORD = @"com.company.app.password";
 
-@interface ViewController ()<UITextFieldDelegate>
+@interface MainViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *myUser;
 @property (weak, nonatomic) IBOutlet UITextField *myPassword;
@@ -22,32 +21,14 @@ NSString * const KEY_PASSWORD = @"com.company.app.password";
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
     self.myUser.delegate = self;
     self.myPassword.delegate = self;
     self.mykey.delegate = self;
-}
-
-
-- (IBAction)writeAction:(id)sender {
-    NSMutableDictionary *userNamePasswordKVPairs = [NSMutableDictionary dictionary];
-    [userNamePasswordKVPairs setObject:self.myUser.text forKey:KEY_USERNAME];
-    [userNamePasswordKVPairs setObject:self.myPassword.text forKey:KEY_PASSWORD];
-    
-    // A、将用户名和密码写入keychain
-    //    [KeyChain save:KEY_USERNAME_PASSWORD data:userNamePasswordKVPairs];
-    
-    if (self.mykey.text.length) {
-        [KeyChain addKeychainData:userNamePasswordKVPairs forKey:self.mykey.text];
-    }else{
-        [AlertController alertControllerWithController:self title:@"提示" message:@"请填入key值" cancelButtonTitle:@"确定" otherButtonTitle:nil cancelAction:nil otherAction:nil];
-    }
-    
-    [self.view endEditing:YES];
 }
 
 - (IBAction)readAction:(id)sender {
@@ -67,10 +48,17 @@ NSString * const KEY_PASSWORD = @"com.company.app.password";
     [self.view endEditing:YES];
 }
 
-- (IBAction)deleteAction:(id)sender {
-    // C、将用户名和密码从keychain中删除
+
+- (IBAction)writeAction:(id)sender {
+    NSMutableDictionary *userNamePasswordKVPairs = [NSMutableDictionary dictionary];
+    [userNamePasswordKVPairs setObject:self.myUser.text forKey:KEY_USERNAME];
+    [userNamePasswordKVPairs setObject:self.myPassword.text forKey:KEY_PASSWORD];
+    
+    // A、将用户名和密码写入keychain
+    //    [KeyChain save:KEY_USERNAME_PASSWORD data:userNamePasswordKVPairs];
+    
     if (self.mykey.text.length) {
-        [KeyChain deleteWithService:self.mykey.text];
+        [KeyChain addKeychainData:userNamePasswordKVPairs forKey:self.mykey.text];
     }else{
         [AlertController alertControllerWithController:self title:@"提示" message:@"请填入key值" cancelButtonTitle:@"确定" otherButtonTitle:nil cancelAction:nil otherAction:nil];
     }
@@ -94,6 +82,18 @@ NSString * const KEY_PASSWORD = @"com.company.app.password";
     
     [self.view endEditing:YES];
 }
+
+- (IBAction)deleteAction:(id)sender {
+    // C、将用户名和密码从keychain中删除
+    if (self.mykey.text.length) {
+        [KeyChain deleteWithService:self.mykey.text];
+    }else{
+        [AlertController alertControllerWithController:self title:@"提示" message:@"请填入key值" cancelButtonTitle:@"确定" otherButtonTitle:nil cancelAction:nil otherAction:nil];
+    }
+    
+    [self.view endEditing:YES];
+}
+
 
 - (IBAction)clearKeyChainAction:(UIButton *)sender {
     NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -129,20 +129,17 @@ NSString * const KEY_PASSWORD = @"com.company.app.password";
     [self.view endEditing:YES];
 }
 
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"%s ------> go here", __FUNCTION__);
     [self.view endEditing:YES];
     return YES;
 }
 
 #pragma mark - UITextViewDelegate
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    NSLog(@"%s ------> go here", __FUNCTION__);
     if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
         //在这里做你响应return键的代码
         [self.mykey resignFirstResponder];
@@ -152,5 +149,6 @@ NSString * const KEY_PASSWORD = @"com.company.app.password";
     }
     return YES;
 }
+
 
 @end

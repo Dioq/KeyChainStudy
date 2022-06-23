@@ -7,7 +7,6 @@
 //
 
 #import "KeyChain.h"
-#import <Security/Security.h>
 
 @interface KeyChain ()
 
@@ -15,9 +14,9 @@
 
 
 // TeamId 38D3676P2T
-NSString *const accessGroupItem = @"38D3676P2T.cn.jobs8a";
+NSString *const accessGroupItem = @"38D3676P2T.cn.jobs8";
 
-NSString *const accessItem = @"38D3676P2T.cn.jobs8a1";
+NSString *const accessItem = @"38D3676P2T.cn.jobs8a";
 
 @implementation KeyChain
 
