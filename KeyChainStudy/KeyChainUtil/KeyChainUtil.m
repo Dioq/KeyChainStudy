@@ -92,7 +92,7 @@
     if (result) {
         CFRelease(result);
     }
-    
+    NSLog(@"status = %d ...",status);
     return (status == errSecSuccess) ? YES : NO;
 }
 
@@ -139,11 +139,9 @@
     }else if ([table isEqual:@"key"]) {
         [queryDic setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
     }
-    [queryDic setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
-    
     
     OSStatus status = SecItemDelete((CFDictionaryRef)queryDic);
-    
+    NSLog(@"status = %d ...",status);
     return (status == errSecSuccess) ? YES : NO;
 }
 
@@ -165,7 +163,6 @@
     }
     // group keychain 钥匙串所在组
     if (item.agrp != nil) {
-        // 允许这项数据可以共享的 group item,如果不添加就不与任何其他app共享
         [queryDic setObject:item.agrp forKey:(id)kSecAttrAccessGroup];
     }
     //Keychain Accessibility Values  (pdmn = cku)
@@ -189,7 +186,7 @@
         [queryDic setObject:item.svce forKey:(__bridge id)kSecAttrService];
     }
     
-    //存储类型,不同的类型放在 SQLite 的不同表时
+    //存储类型,不同的类型放在 SQLite 的不同表中
     if ([table isEqual:@"genp"]) {
         [queryDic setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
     }else if ([table isEqual:@"inet"]) {

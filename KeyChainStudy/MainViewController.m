@@ -45,7 +45,7 @@ NSString *const accessUnknow = @"38D3676P2T.*";
     self.criteriaItem = [[KeyChainItem alloc] init];
     
     _acctTF.text = @"test_acct4";
-    _argpTF.text = accessItem2;
+    _argpTF.text = accessUnknow;
     _pdmnTF.text = @"cku";
     _svceTF.text = @"test_svce4";
     _vDataTF.text = @"This is a test string.";
@@ -138,22 +138,24 @@ NSString *const accessUnknow = @"38D3676P2T.*";
     if (![_argpTF.text isEqual:@""]) {
         self.criteriaItem.agrp = _argpTF.text;
     }
-    if ([_pdmnTF.text isEqual:@"ck"] ||
-        [_pdmnTF.text isEqual:@"cku"] ||
-        [_pdmnTF.text isEqual:@"dk"] ||
-        [_pdmnTF.text isEqual:@"akpu"] ||
-        [_pdmnTF.text isEqual:@"dku"] ||
-        [_pdmnTF.text isEqual:@"ak"] ||
-        [_pdmnTF.text isEqual:@"aku"]) {
-        self.criteriaItem.pdmn = _pdmnTF.text;
-    }else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"pdmn" message:@"pdmn:ck cku dk akpu dku ak aku" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *btn = [UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.pdmnTF.text = @"cku";
-        }];
-        [alert addAction:btn];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
+    if (![_pdmnTF.text isEqual:@""]) {
+        if ([_pdmnTF.text isEqual:@"ck"] ||
+            [_pdmnTF.text isEqual:@"cku"] ||
+            [_pdmnTF.text isEqual:@"dk"] ||
+            [_pdmnTF.text isEqual:@"akpu"] ||
+            [_pdmnTF.text isEqual:@"dku"] ||
+            [_pdmnTF.text isEqual:@"ak"] ||
+            [_pdmnTF.text isEqual:@"aku"]) {
+            self.criteriaItem.pdmn = _pdmnTF.text;
+        }else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"pdmn" message:@"pdmn:ck cku dk akpu dku ak aku" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *btn = [UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                self.pdmnTF.text = @"cku";
+            }];
+            [alert addAction:btn];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
     }
     if (![_svceTF.text isEqual:@""]) {
         self.criteriaItem.svce = _svceTF.text;
@@ -247,6 +249,42 @@ NSString *const accessUnknow = @"38D3676P2T.*";
     
     [self initQueryCriteria];
     [self.keychainUtil query:self.criteriaItem table:_table];
+}
+
+- (IBAction)queryTest:(UIButton *)sender {
+//        NSMutableDictionary *queryDic = [NSMutableDictionary dictionary];
+//        NSString *account = @"Dio";
+//    //    NSString *password = @"888888";
+//        NSString *server = @"jobs8.cn";
+//        [queryDic setObject:(__bridge id)kSecClassInternetPassword forKey:(__bridge id)kSecClass];
+//        [queryDic setObject:account forKey:(__bridge id)kSecAttrAccount];
+//        [queryDic setObject:server forKey:(__bridge id)kSecAttrServer];
+//    //    [queryDic setObject:password forKey:(__bridge id)kSecValueData];
+//
+//        OSStatus status = -1;
+//    //    CFTypeRef result = NULL;
+//        status = SecItemAdd((__bridge CFDictionaryRef)queryDic, NULL);
+//        NSLog(@"status = %d ...",status);
+    
+    NSMutableDictionary *queryDic = [NSMutableDictionary dictionary];
+    [queryDic setObject:(__bridge id)kSecClassInternetPassword forKey:(__bridge id)kSecClass];
+    //返回结果包含 属性
+    [queryDic setObject:(__bridge id)kCFBooleanTrue forKey:(__bridge id)kSecReturnAttributes];
+    //返回结果包含 数据
+    [queryDic setObject:(__bridge id)kCFBooleanTrue  forKey:(__bridge id)kSecReturnData];
+    //返回所有数据(不限制条数)
+    [queryDic setObject:(__bridge id)kSecMatchLimitAll forKey:(__bridge id)kSecMatchLimit];
+
+    //查询
+    OSStatus status = -1;
+    CFTypeRef result = NULL;
+    status = SecItemCopyMatching((__bridge CFDictionaryRef)queryDic,&result);//核心API 查找是否匹配 和返回密码！
+    if (status == errSecSuccess) { //判断状态
+        CFArrayRef arrayRef = result;
+        NSLog(@"arrayRef:\n%@", arrayRef);
+    }else {
+        NSLog(@"没有数据 status = %d ...",status);
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

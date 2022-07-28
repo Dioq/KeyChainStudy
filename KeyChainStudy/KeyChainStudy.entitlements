@@ -4,8 +4,8 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)cm.tencent.xin</string>
 		<string>$(AppIdentifierPrefix)cn.jobs8.keychain</string>
+		<string>$(AppIdentifierPrefix)cm.tencent.xin</string>
 		<string>$(AppIdentifierPrefix)*</string>
 	</array>
 </dict>
