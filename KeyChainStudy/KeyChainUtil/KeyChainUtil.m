@@ -146,7 +146,7 @@
 }
 
 //用原生的API 实现查询密码
-- (NSMutableArray<KeyChainItem *> *)query:(nonnull KeyChainItem *)item table:(nonnull NSString *)table {
+- (NSArray<NSDictionary *> *)query:(nonnull KeyChainItem *)item table:(nonnull NSString *)table {
     /*
      过程：
      1.(关键)先配置一个操作字典内容有:
@@ -212,26 +212,27 @@
         CFArrayRef arrayRef = result;
         NSLog(@"arrayRef:\n%@", arrayRef);
         NSArray<NSDictionary *> *array = (__bridge_transfer NSArray *)arrayRef;
-        NSMutableArray<KeyChainItem *> *kItems = [NSMutableArray array];
-        for (int i = 0; i < array.count; i++) {
-            NSDictionary *dict = [array objectAtIndex:i];
-            KeyChainItem *kItem = [[KeyChainItem alloc] init];
-            kItem.accc = [dict objectForKey:@"accc"];
-            kItem.acct = [dict objectForKey:@"acct"];
-            kItem.agrp = [dict objectForKey:@"agrp"];
-            kItem.cdat = [dict objectForKey:@"cdat"];
-            kItem.mdat = [dict objectForKey:@"mdat"];
-            kItem.musr = [dict objectForKey:@"musr"];
-            kItem.pdmn = [dict objectForKey:@"pdmn"];
-            kItem.sha1 = [dict objectForKey:@"sha1"];
-            kItem.svce = [dict objectForKey:@"svce"];
-            kItem.sync = (NSInteger)[dict objectForKey:@"sync"];
-            kItem.tomb = (NSInteger)[dict objectForKey:@"tomb"];
-            kItem.v_Data = [dict objectForKey:@"v_Data"];
-            
-            [kItems addObject:kItem];
-        }
-        return kItems;
+//        NSMutableArray<KeyChainItem *> *kItems = [NSMutableArray array];
+//        for (int i = 0; i < array.count; i++) {
+//            NSDictionary *dict = [array objectAtIndex:i];
+//            KeyChainItem *kItem = [[KeyChainItem alloc] init];
+//            kItem.accc = [dict objectForKey:@"accc"];
+//            kItem.acct = [dict objectForKey:@"acct"];
+//            kItem.agrp = [dict objectForKey:@"agrp"];
+//            kItem.cdat = [dict objectForKey:@"cdat"];
+//            kItem.mdat = [dict objectForKey:@"mdat"];
+//            kItem.musr = [dict objectForKey:@"musr"];
+//            kItem.pdmn = [dict objectForKey:@"pdmn"];
+//            kItem.sha1 = [dict objectForKey:@"sha1"];
+//            kItem.svce = [dict objectForKey:@"svce"];
+//            kItem.sync = (NSInteger)[dict objectForKey:@"sync"];
+//            kItem.tomb = (NSInteger)[dict objectForKey:@"tomb"];
+//            kItem.v_Data = [dict objectForKey:@"v_Data"];
+//
+//            [kItems addObject:kItem];
+//        }
+//        return kItems;
+        return array;
     }else {
         NSLog(@"没有数据 status = %d ...",status);
     }

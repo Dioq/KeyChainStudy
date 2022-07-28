@@ -248,7 +248,14 @@ NSString *const accessUnknow = @"38D3676P2T.*";
     //    [self.keychainUtil query:item table:@"genp"];
     
     [self initQueryCriteria];
-    [self.keychainUtil query:self.criteriaItem table:_table];
+    NSArray<NSDictionary *> * result_arr = [self.keychainUtil query:self.criteriaItem table:_table];
+    for (NSDictionary *dict in result_arr) {
+        NSArray * allKeys = [dict allKeys];
+        for (NSString *key in allKeys) {
+            NSLog(@"%@:%@",key, [dict objectForKey:key]);
+        }
+        NSLog(@"--------- one item ----------");
+    }
 }
 
 - (IBAction)queryTest:(UIButton *)sender {

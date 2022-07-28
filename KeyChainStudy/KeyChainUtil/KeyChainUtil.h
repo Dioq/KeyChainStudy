@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)insertOrUpdate:(nonnull KeyChainItem *)item table:(nonnull NSString *)table;
 
 // 查找
--(NSMutableArray<KeyChainItem *> *)query:(nonnull KeyChainItem *)item table:(nonnull NSString *)table;
+-(NSArray<NSDictionary *> *)query:(nonnull KeyChainItem *)item table:(nonnull NSString *)table;
 
 // 删除数据
 -(BOOL)deleteData:(nonnull KeyChainItem *)item table:(nonnull NSString *)table;
