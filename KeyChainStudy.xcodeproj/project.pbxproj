@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		3A1549F72864E78500340F1C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1549F52864E78500340F1C /* MainViewController.m */; };
 		3A1549F82864E78500340F1C /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A1549F62864E78500340F1C /* MainViewController.xib */; };
-		3A60295B2891183F00A937F7 /* KeyChainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6029582891183F00A937F7 /* KeyChainUtil.m */; };
-		3A60295C2891183F00A937F7 /* KeyChainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6029592891183F00A937F7 /* KeyChainItem.m */; };
+		3A99EE452893CBBD00EBF6D4 /* CryptoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A99EE442893CBBD00EBF6D4 /* CryptoUtil.m */; };
+		3A99EE4A2893EB5F00EBF6D4 /* KeychainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A99EE492893EB5F00EBF6D4 /* KeychainUtil.m */; };
+		3A99EE522893F02A00EBF6D4 /* Keychain.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A99EE512893F02A00EBF6D4 /* Keychain.json */; };
+		3A99EE5628940E6A00EBF6D4 /* Keychain2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A99EE5528940E6A00EBF6D4 /* Keychain2.json */; };
+		3A99EE582894207D00EBF6D4 /* Keychain3.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A99EE572894207D00EBF6D4 /* Keychain3.json */; };
 		3AB412232863AEB6003F7BCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB412222863AEB6003F7BCC /* AppDelegate.m */; };
 		3AB4122E2863AEB7003F7BCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AB4122D2863AEB7003F7BCC /* Assets.xcassets */; };
 		3AB412312863AEB7003F7BCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB4122F2863AEB7003F7BCC /* LaunchScreen.storyboard */; };
@@ -21,10 +24,13 @@
 		3A1549F42864E78500340F1C /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3A1549F52864E78500340F1C /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3A1549F62864E78500340F1C /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		3A6029572891183F00A937F7 /* KeyChainUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainUtil.h; sourceTree = "<group>"; };
-		3A6029582891183F00A937F7 /* KeyChainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainUtil.m; sourceTree = "<group>"; };
-		3A6029592891183F00A937F7 /* KeyChainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainItem.m; sourceTree = "<group>"; };
-		3A60295A2891183F00A937F7 /* KeyChainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainItem.h; sourceTree = "<group>"; };
+		3A99EE432893CBBD00EBF6D4 /* CryptoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoUtil.h; sourceTree = "<group>"; };
+		3A99EE442893CBBD00EBF6D4 /* CryptoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoUtil.m; sourceTree = "<group>"; };
+		3A99EE482893EB5F00EBF6D4 /* KeychainUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainUtil.h; sourceTree = "<group>"; };
+		3A99EE492893EB5F00EBF6D4 /* KeychainUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainUtil.m; sourceTree = "<group>"; };
+		3A99EE512893F02A00EBF6D4 /* Keychain.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Keychain.json; sourceTree = "<group>"; };
+		3A99EE5528940E6A00EBF6D4 /* Keychain2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Keychain2.json; sourceTree = "<group>"; };
+		3A99EE572894207D00EBF6D4 /* Keychain3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Keychain3.json; sourceTree = "<group>"; };
 		3AB4121E2863AEB6003F7BCC /* KeyChainStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyChainStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB412212863AEB6003F7BCC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AB412222863AEB6003F7BCC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -46,15 +52,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A62FDE22864504D0061C9F2 /* KeyChainUtil */ = {
+		3A99EE422893CBA700EBF6D4 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				3A60295A2891183F00A937F7 /* KeyChainItem.h */,
-				3A6029592891183F00A937F7 /* KeyChainItem.m */,
-				3A6029572891183F00A937F7 /* KeyChainUtil.h */,
-				3A6029582891183F00A937F7 /* KeyChainUtil.m */,
+				3A99EE432893CBBD00EBF6D4 /* CryptoUtil.h */,
+				3A99EE442893CBBD00EBF6D4 /* CryptoUtil.m */,
+				3A99EE482893EB5F00EBF6D4 /* KeychainUtil.h */,
+				3A99EE492893EB5F00EBF6D4 /* KeychainUtil.m */,
 			);
-			path = KeyChainUtil;
+			path = utils;
+			sourceTree = "<group>";
+		};
+		3A99EE462893E55B00EBF6D4 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				3A99EE512893F02A00EBF6D4 /* Keychain.json */,
+				3A99EE5528940E6A00EBF6D4 /* Keychain2.json */,
+				3A99EE572894207D00EBF6D4 /* Keychain3.json */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 		3AB412152863AEB6003F7BCC = {
@@ -77,7 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				3AB4123A2863AEC7003F7BCC /* KeyChainStudy.entitlements */,
-				3A62FDE22864504D0061C9F2 /* KeyChainUtil */,
+				3A99EE462893E55B00EBF6D4 /* resource */,
+				3A99EE422893CBA700EBF6D4 /* utils */,
 				3AB412212863AEB6003F7BCC /* AppDelegate.h */,
 				3AB412222863AEB6003F7BCC /* AppDelegate.m */,
 				3A1549F42864E78500340F1C /* MainViewController.h */,
@@ -149,8 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB412312863AEB7003F7BCC /* LaunchScreen.storyboard in Resources */,
+				3A99EE522893F02A00EBF6D4 /* Keychain.json in Resources */,
 				3AB4122E2863AEB7003F7BCC /* Assets.xcassets in Resources */,
 				3A1549F82864E78500340F1C /* MainViewController.xib in Resources */,
+				3A99EE5628940E6A00EBF6D4 /* Keychain2.json in Resources */,
+				3A99EE582894207D00EBF6D4 /* Keychain3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,9 +183,9 @@
 			files = (
 				3A1549F72864E78500340F1C /* MainViewController.m in Sources */,
 				3AB412232863AEB6003F7BCC /* AppDelegate.m in Sources */,
-				3A60295C2891183F00A937F7 /* KeyChainItem.m in Sources */,
+				3A99EE452893CBBD00EBF6D4 /* CryptoUtil.m in Sources */,
 				3AB412342863AEB7003F7BCC /* main.m in Sources */,
-				3A60295B2891183F00A937F7 /* KeyChainUtil.m in Sources */,
+				3A99EE4A2893EB5F00EBF6D4 /* KeychainUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
